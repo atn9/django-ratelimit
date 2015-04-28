@@ -140,13 +140,9 @@ def is_ratelimited(request, group=None, fn=None, key=None, rate=None,
     cache = get_cache(cache_name)
 
     if callable(key):
-<<<<<<< HEAD
         if hasattr(key, '__func__'):
             key = key.__func__
-        value = key(request)
-=======
         value = key(group, request)
->>>>>>> fix-django-1.8
     elif key in _SIMPLE_KEYS:
         value = _SIMPLE_KEYS[key](request)
     elif ':' in key:
